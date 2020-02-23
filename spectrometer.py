@@ -2,6 +2,7 @@ import serial
 import matplotlib.pyplot as plt 
 import numpy as np
 import sys
+from datetime import datetime
 
 cmdargs = str(sys.argv)
 
@@ -41,6 +42,15 @@ if ser.is_open==True:
 				plt.clf()
 				plt.plot(spek)
 				plt.draw()
+				sttime = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
+				savestring = sttime
+				for i in spek:
+					savestring = savestring + ',' + str(i)
+				file_object = open('spek.log', 'a')
+				file_object.write(savestring+"\n")
+				file_object.close()
+				
+				
 				plt.pause(0.001)
 		except KeyboardInterrupt:
 			exit()
