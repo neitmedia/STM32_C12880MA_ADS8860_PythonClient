@@ -25,8 +25,7 @@ if ser.is_open==True:
 	bytearr = []
 	intTimeMicroseconds = int(sys.argv[1])
 	# calculate timer value for spectrometer based on known timing specs
-	longInt = intTimeMicroseconds;
-	#longInt = round((intTimeMicroseconds-192)/0.033)
+	longInt = round((intTimeMicroseconds-192)/0.033)
 	# convert 32 bit int to 4 x 8 bit int
 	byte0 = ((longInt >> 24) & 0xFF) ;
 	byte1 = ((longInt >> 16) & 0xFF) ;
